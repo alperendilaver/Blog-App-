@@ -1,0 +1,61 @@
+@model PostViewModel
+
+<div class="row">
+    <div class="col-12">
+        <h1>Create Post</h1>
+        <div class="bg-white p-4">
+            <form action="Create"  method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" class="form-control">
+                </div>
+            
+                <div class="mb-3">
+                    <label asp-for="Context" class="form-label"></label>
+                    <textarea asp-for="Context"></textarea>
+                </div>
+                <input type="hidden" asp-for="UserId" value="@ViewBag.UserId">
+
+                <div class="mb-3">
+                    <label asp-for="IsActive" class="form-label"></label>
+                    <select asp-for="IsActive">
+                        <option value="false">Pasif</option>
+                        <option value="true">Aktif</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label asp-for="tagsId" class="form-label"></label>
+                    <select asp-for="tagsId"  asp-items="@ViewBag.Tags" class="form-control">
+                    </select>
+                </div>
+                
+                
+
+                <div class="mb-3">
+                    <label asp-for="imageFile" class="form-label"></label>
+                    
+                    <input type="file" 
+                    name="imageFile" id="imageFile"
+                    class="form-control">    
+                </div>
+            
+            
+            
+                <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector:'#Context'
+        });
+    </script>
+}

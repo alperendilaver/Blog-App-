@@ -1,0 +1,83 @@
+@model PostEditViewModel
+
+<div class="row">
+    <div class="col-12">
+        <h1>Edit Post</h1>
+        <div class="bg-white p-4">
+            <form action="Edit"  method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+             
+                <input type="hidden" asp-for="PostId" value="@Model.PostId">
+                <input type="hidden" asp-for="User" value="@Model.User">
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" class="form-control" value="@Model.Title">
+                </div>
+             
+                <div class="mb-3">
+                    <label asp-for="Context" class="form-label"></label>
+                    <textarea asp-for="Context" class="form-control" value="@Model.Context"></textarea>
+                </div>
+            
+                <div class="mb-3">
+                    <label class="form-label"><p>Kullanıcı: @Model.User.Name</p></label>
+                  </div>
+            
+                <input type="hidden" asp-for="Image" value="@Model.Image">
+
+                <div class="mb-3">
+                    <label asp-for="IsActive" class="form-label"></label>
+                    <select asp-for="IsActive">
+                        <option value="false">Pasif</option>
+                        <option value="true">Aktif</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <img src="~/img/@Model.Image" class="img-fluid rounded" style="width: 600px;" alt="">
+                </div>
+                <div class="mb-3">
+                    @foreach(var item in @Model.Tags){
+
+                        <p>
+                            @item.Text
+                        </p>
+                    }
+                    <p>
+                
+                    </p>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="tagsId"  class="form-label"></label>
+                    <select  asp-for="tagsId" asp-items="@ViewBag.Tags" class="form-control" multiple>
+                    </select>
+                </div>
+                
+                
+                <div class="mb-3">
+                    <label asp-for="changeImage">Resim Aynı Kalsın mı</label>
+                    <input type="checkbox" asp-for="changeImage" value="true">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="imageFile" class="form-label"></label>
+                    
+                    <input type="file" 
+                    name="imageFile" id="imageFile"
+                    class="form-control">    
+                </div>
+            
+         
+            
+                <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector:'#Context'
+        });
+    </script>
+}

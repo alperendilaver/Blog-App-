@@ -1,0 +1,49 @@
+@model RegisterViewModel
+
+<div class="row">
+    <div class="col-12">
+        <h1>Register</h1>
+        <div class="bg-white p-4">
+            <form action="Register" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+                <div class="mb-3">
+                    <label asp-for="UserName" class="form-label"></label>
+                    <input asp-for="UserName" class="form-control">
+                </div>
+            
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control">
+                </div>
+            
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control">
+                </div>
+            
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control">
+                </div>
+                
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="imageFile" class="form-label"></label>
+                    
+                    <input type="file" 
+                    name="imageFile" id="imageFile"
+                    class="form-control">    
+                </div>
+            
+            
+            
+                <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+    </div>
+</div>
